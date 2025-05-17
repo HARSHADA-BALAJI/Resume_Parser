@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Resume Matcher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Matcher</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class="messages">
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+
+        <h2>Step 1: Upload Job Description</h2>
+        <form method="POST" enctype="multipart/form-data" action="{{ url_for('index') }}">
+            <input type="file" name="jd_file" required />
+            <button type="submit">Upload JD</button>
+        </form>
+        {% if jd_filename %}
+            <p><strong>Current JD:</strong> {{ jd_filename }}</p>
+        {% endif %}
+
+        <hr />
+
+        <h2>Step 2: Upload Resume</h2>
+        <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload_resume') }}">
+            <input type="file" name="resume_file" required />
+            <button type="submit">Match Resume</button>
+        </form>
+    </div>
+</body>
+</html>
+
