@@ -7,7 +7,7 @@ This web application uses OpenAI’s GPT model to **match resumes against job de
 - Automatically updates a central **Excel sheet** for tracking
 
 ## 📁 Project Structure
-resume_matcher_webapp/
+resume_parse/
 │
 ├── app.py # Flask web backend
 ├── parser.py # File parsing (PDF/DOCX to text)
@@ -31,7 +31,7 @@ resume_matcher_webapp/
 
 ```bash
 git clone <your-repo-url>
-cd resume_matcher_webapp
+cd resume_parse
 
 ### 2. Install dependencies
 
